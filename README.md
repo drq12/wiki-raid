@@ -1,9 +1,13 @@
 # wiki-raid
 create raid raspberry pi openmediavault
 
+```
 sudo -i
+```
 
+```
 lsblk
+```
 
 ```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
@@ -15,8 +19,14 @@ mmcblk0     179:0    0   7.4G  0 disk
 └─mmcblk0p2 179:2    0   6.9G  0 part /
 ```
 
+```
 mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda /dev/sdb
+```
 
+вместо level=1 можно указать необходимый уровень raid 0,1,5 но скоректировать количество raid-devices
+
+```
 mkfs.xfs /dev/md0
+```
 
 по завершению в OVM появится новый пункт storage -> multiple devices
